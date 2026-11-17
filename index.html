@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f5ff">
+<title>小文的异性边界测试</title>
+<style>
+:root{--ink:#29243a;--muted:#817b91;--paper:#fff;--bg:#f7f4fb;--line:#eee9f5;--purple:#7657c8;--purple2:#efe9ff;--pink:#f8e7ef;--green:#e8f5ee;--shadow:0 18px 55px rgba(57,39,91,.09)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 4%,#f4eafa 0,transparent 32%),radial-gradient(circle at 95% 95%,#fbe9ef 0,transparent 30%),var(--bg);color:var(--ink);font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh}
+button{font:inherit;cursor:pointer}.wrap{width:min(760px,calc(100% - 32px));margin:0 auto;padding:34px 0 54px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;color:var(--muted);font-size:13px}.brand{font-weight:800;letter-spacing:.08em;color:var(--purple)}.pill{border:1px solid #e8e1f2;background:#ffffffa8;border-radius:99px;padding:7px 12px}
+.card{background:rgba(255,255,255,.92);border:1px solid #fff;border-radius:28px;padding:clamp(22px,5vw,42px);box-shadow:var(--shadow)}
+.hero{text-align:center;padding:clamp(30px,7vw,60px) clamp(22px,5vw,42px)}.spark{font-size:34px;margin-bottom:12px}.eyebrow{font-size:12px;letter-spacing:.2em;color:var(--purple);font-weight:800}.hero h1{font-size:clamp(30px,6vw,46px);line-height:1.2;margin:13px 0 14px;letter-spacing:-.04em}.hero p{color:var(--muted);line-height:1.85;margin:0 auto;max-width:490px;font-size:15px}.meta{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:24px 0 28px}.meta span{font-size:12px;padding:8px 12px;background:#f8f5fc;border-radius:99px;color:#6d657e}.primary{border:0;background:var(--purple);color:white;padding:14px 25px;border-radius:15px;font-weight:750;box-shadow:0 8px 20px #7657c833;transition:.18s}.primary:hover{transform:translateY(-2px);background:#6545bb}.subtle{border:1px solid var(--line);background:white;color:var(--muted);padding:12px 18px;border-radius:13px}.footnote{font-size:12px;color:#a09aaa;margin-top:18px}
+.progress-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:var(--muted);font-size:13px}.bar{height:7px;background:#f0edf5;border-radius:20px;overflow:hidden;margin-bottom:28px}.bar>i{display:block;height:100%;background:linear-gradient(90deg,#8b6cdb,#e49ab8);border-radius:20px;transition:width .25s}.category{display:inline-block;color:var(--purple);background:var(--purple2);padding:7px 11px;border-radius:99px;font-size:12px;font-weight:750;margin-bottom:18px}.question{font-size:clamp(22px,4.7vw,30px);line-height:1.55;letter-spacing:-.025em;margin:0 0 26px}.options{display:grid;gap:11px}.option{display:flex;align-items:center;gap:13px;text-align:left;border:1.5px solid var(--line);background:white;border-radius:16px;padding:16px 17px;color:var(--ink);transition:.16s}.option:hover{border-color:#c9b9ed;background:#fcfaff}.option.selected{border-color:var(--purple);background:#f6f2ff;box-shadow:0 0 0 3px #7657c814}.dot{width:21px;height:21px;border:1.5px solid #d6cfdf;border-radius:50%;display:grid;place-items:center;flex:none}.selected .dot{border-color:var(--purple);background:var(--purple);color:white}.dot svg{width:12px;height:12px}.option strong{display:block;font-size:15px}.option small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.nav{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.nav button{min-width:112px}.nav .primary:disabled{opacity:.35;cursor:not-allowed;transform:none}.result{text-align:center}.result .score{font-size:clamp(56px,13vw,82px);font-weight:850;letter-spacing:-.07em;color:var(--purple);line-height:1;margin:18px 0 8px}.result h2{font-size:27px;margin:12px 0}.result p{color:var(--muted);line-height:1.8}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}.stat{background:#faf8fc;border:1px solid var(--line);border-radius:16px;padding:16px 8px}.stat b{display:block;font-size:25px}.stat span{font-size:12px;color:var(--muted)}.result-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}.review{text-align:left;margin-top:30px;border-top:1px solid var(--line);padding-top:24px}.review h3{font-size:16px}.review-item{padding:13px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65}.review-item span{color:var(--muted)}.review-item b{color:var(--purple);font-weight:700}.hidden{display:none!important}
+@media(max-width:520px){.wrap{width:calc(100% - 20px);padding-top:18px}.card{border-radius:22px}.top{margin:0 4px 15px}.nav button{min-width:0;flex:1}.stats{gap:7px}.stat{padding:13px 5px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top"><div class="brand">✳ XIAOWEN TEST</div><div class="pill">朋友聚会 · 边界感测试</div></div>
+  <section class="card hero" id="start">
+    <div class="spark">💌</div><div class="eyebrow">A LITTLE RELATIONSHIP QUIZ</div>
+    <h1>小文的异性边界测试</h1>
+    <p>如果小文和异性做这些事，你能接受到什么程度？<br>没有标准答案，按你的真实想法选择就好。</p>
+    <div class="meta"><span>✦ 40 道情境题</span><span>♡ 约 3–5 分钟</span><span>☁️ 答案仅保存在本机</span></div>
+    <button class="primary" id="startBtn">开始测试 →</button>
+    <div class="footnote">本测试仅供朋友间娱乐和交流，不代表对任何人的评价。</div>
+  </section>
+  <section class="card hidden" id="quiz">
+    <div class="progress-head"><span id="stepLabel">第 1 / 40 题</span><span id="percent">2%</span></div>
+    <div class="bar"><i id="progress" style="width:2.5%"></i></div>
+    <div class="category" id="category">日常社交</div>
+    <h2 class="question" id="question"></h2>
+    <div class="options" id="options"></div>
+    <div class="nav"><button class="subtle" id="prevBtn">← 上一题</button><button class="primary" id="nextBtn" disabled>下一题 →</button></div>
+    <div class="footnote" style="text-align:center">你的选择会自动保存到当前浏览器</div>
+  </section>
+  <section class="card result hidden" id="result">
+    <div class="eyebrow">YOUR RESULT</div><div class="spark">🪞</div>
+    <div class="score" id="score">0%</div><h2 id="resultTitle">边界感报告</h2>
+    <p id="resultDesc"></p>
+    <div class="stats">
+      <div class="stat"><b id="yesCount">0</b><span>能接受</span></div>
+      <div class="stat"><b id="maybeCount">0</b><span>看情况</span></div>
+      <div class="stat"><b id="noCount">0</b><span>不能接受</span></div>
+    </div>
+    <div class="result-actions"><button class="primary" id="copyBtn">复制结果</button><button class="subtle" id="restartBtn">再测一次 ↻</button></div>
+    <div class="review"><h3>逐题答案</h3><div id="reviewList"></div></div>
+    <div class="footnote">结果只反映你对这 40 个情境的主观选择，不是忠诚度或感情质量评分。</div>
+  </section>
+</main>
+<script>
+const questions = [
+["日常社交","能接受小文和异性单独约着喝咖啡吗？"],
+["日常社交","能接受小文和异性单独吃午饭或晚饭吗？"],
+["日常社交","能接受小文和异性经常一起上下班或上下学吗？"],
+["日常社交","能接受小文和异性互相分享日常琐事吗？"],
+["日常社交","能接受小文和异性每天都发消息聊天吗？"],
+["日常社交","能接受小文和异性互相发送有趣的短视频或表情包吗？"],
+["日常社交","能接受小文和异性一起打游戏到很晚吗？"],
+["日常社交","能接受小文和异性单独去看电影吗？"],
+["日常社交","能接受小文和异性一起参加对方朋友的聚会吗？"],
+["日常社交","能接受小文和异性在社交平台频繁互相评论、点赞吗？"],
+["亲密互动","能接受小文和异性互相起亲昵称呼吗？"],
+["亲密互动","能接受小文和异性分享自己的烦恼，并寻求安慰吗？"],
+["亲密互动","能接受小文和异性在对方难过时进行长时间拥抱吗？"],
+["亲密互动","能接受小文和异性牵手过马路或在人多时拉着对方吗？"],
+["亲密互动","能接受小文和异性靠在一起看手机或看电影吗？"],
+["亲密互动","能接受小文和异性互相整理头发、衣领或衣服吗？"],
+["亲密互动","能接受小文和异性拍看起来比较亲密的合照吗？"],
+["亲密互动","能接受小文和异性互送有特殊纪念意义的礼物吗？"],
+["亲密互动","能接受小文和异性单独庆祝生日，并准备惊喜吗？"],
+["亲密互动","能接受小文和异性在聊天时使用爱心或暧昧表情吗？"],
+["深夜相处","能接受小文和异性在深夜单独聊天到凌晨吗？"],
+["深夜相处","能接受小文和异性深夜打电话或视频通话吗？"],
+["深夜相处","能接受小文和异性在对方失眠时陪着聊天吗？"],
+["深夜相处","能接受小文和异性深夜单独出去散步吗？"],
+["深夜相处","能接受小文和异性喝酒后单独待在一起吗？"],
+["深夜相处","能接受小文和异性在对方家里单独待到很晚吗？"],
+["深夜相处","能接受小文和异性一起通宵打游戏或看剧吗？"],
+["深夜相处","能接受小文和异性在旅行时住同一间房吗？"],
+["暧昧边界","能接受小文和异性互相说带有暧昧意味的话吗？"],
+["暧昧边界","能接受小文和异性开带有性暗示的玩笑吗？"],
+["暧昧边界","能接受小文和异性讨论彼此的理想型或感情经历吗？"],
+["暧昧边界","能接受小文和异性说“如果早点认识你就好了”之类的话吗？"],
+["暧昧边界","能接受小文和异性在聊天中刻意隐瞒你们的关系吗？"],
+["暧昧边界","能接受小文和异性删除聊天记录或设置消息免打扰吗？"],
+["暧昧边界","能接受小文和异性单独去周边城市或景点一日游吗？"],
+["暧昧边界","能接受小文和异性安排两个人的短途旅行吗？"],
+["高争议行为","能接受小文和异性接吻吗？"],
+["高争议行为","能接受小文和异性躺在同一张床上休息吗？"],
+["高争议行为","能接受小文和异性有摸头、摸脸或搂腰等亲密肢体接触吗？"],
+["高争议行为","能接受小文和异性以情侣的方式相处，但坚持说只是朋友吗？"],
+["高争议行为","能接受小文和异性发生超出普通朋友界限的亲密行为吗？"]
+];
+const choices=[{label:"能接受",desc:"这件事对我来说没问题",value:2},{label:"看情况",desc:"要看具体关系、场景和分寸",value:1},{label:"不能接受",desc:"这会让我感到不舒服",value:0}];
+let answers=JSON.parse(localStorage.getItem("xiaowen-test-answers")||"{}");
+let current=0;
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem("xiaowen-test-answers",JSON.stringify(answers))}
+function show(screen){["start","quiz","result"].forEach(id=>$(id).classList.toggle("hidden",id!==screen))}
+function render(){
+ const q=questions[current];$("stepLabel").textContent=`第 ${current+1} / ${questions.length} 题`;
+ const pct=Math.round((current+1)/questions.length*100);$("percent").textContent=pct+"%";$("progress").style.width=pct+"%";
+ $("category").textContent=q[0];$("question").textContent=q[1];
+ $("options").innerHTML="";
+ choices.forEach(c=>{const b=document.createElement("button");b.className="option"+(answers[current]===c.value?" selected":"");b.innerHTML=`<span class="dot">${answers[current]===c.value?"<svg viewBox='0 0 12 12' fill='none'><path d='m2 6 2.5 2.5L10 3' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>":""}</span><span><strong>${c.label}</strong><small>${c.desc}</small></span>`;b.addEventListener("click",()=>{answers[current]=c.value;save();render()});$("options").appendChild(b)});
+ $("prevBtn").disabled=current===0;$("prevBtn").style.opacity=current===0?".4":"1";
+ $("nextBtn").disabled=answers[current]===undefined;$("nextBtn").textContent=current===questions.length-1?"查看结果 →":"下一题 →";
+}
+function finish(){
+ const vals=Object.values(answers).map(Number),sum=vals.reduce((a,b)=>a+b,0),score=Math.round(sum/(questions.length*2)*100);
+ const yes=vals.filter(x=>x===2).length,maybe=vals.filter(x=>x===1).length,no=vals.filter(x=>x===0).length;
+ let title,desc;
+ if(score>=85){title="边界感比较宽松";desc="你对小文和异性的相处方式相对开放。只要彼此坦诚、尊重边界，很多普通社交和亲密互动都可以接受。"}
+ else if(score>=65){title="开放但有自己的尺度";desc="你整体比较包容，但并不是毫无底线。关系、场景和坦诚程度会影响你的判断。"}
+ else if(score>=40){title="边界感清晰，重视分寸";desc="你会区分普通社交和亲密互动。对一些容易产生误会的行为，你更希望提前沟通、明确边界。"}
+ else{title="边界感比较严格";desc="你对异性相处中的亲密行为比较敏感，更看重专属感和关系中的安全感。"}
+ $("score").textContent=score+"%";$("resultTitle").textContent=title;$("resultDesc").textContent=desc;
+ $("yesCount").textContent=yes;$("maybeCount").textContent=maybe;$("noCount").textContent=no;
+ $("reviewList").innerHTML=questions.map((q,i)=>{const c=choices.find(x=>x.value===answers[i]);return `<div class="review-item"><span>${String(i+1).padStart(2,"0")} · ${q[0]}</span><br>${q[1]}<br><b>${c?c.label:"未作答"}</b></div>`}).join("");
+ show("result");window.scrollTo({top:0,behavior:"smooth"});
+}
+$("startBtn").addEventListener("click",()=>{if(Object.keys(answers).length===questions.length){current=0;show("quiz");render()}else{current=Number(Object.keys(answers).sort((a,b)=>Number(a)-Number(b)).slice(-1)[0]||0);show("quiz");render()}});
+$("prevBtn").addEventListener("click",()=>{if(current>0){current--;render()}});
+$("nextBtn").addEventListener("click",()=>{if(answers[current]===undefined)return;if(current<questions.length-1){current++;render()}else finish()});
+$("restartBtn").addEventListener("click",()=>{if(confirm("确定清空本次答案，重新开始吗？")){answers={};save();current=0;show("start");window.scrollTo({top:0,behavior:"smooth"})}});
+$("copyBtn").addEventListener("click",async()=>{const vals=Object.values(answers).map(Number),score=Math.round(vals.reduce((a,b)=>a+b,0)/(questions.length*2)*100);const t=`小文的异性边界测试：${score}%\n能接受：${vals.filter(x=>x===2).length}题｜看情况：${vals.filter(x=>x===1).length}题｜不能接受：${vals.filter(x=>x===0).length}题\n来测测你能接受小文和异性相处到什么程度！`;try{await navigator.clipboard.writeText(t);$("copyBtn").textContent="已复制 ✓"}catch(e){$("copyBtn").textContent="复制失败，请手动截图"}});
+</script>
+</body>
+</html>

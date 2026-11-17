@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f8f5ff">
-<title>小文的异性边界测试</title>
+<title>小文算出轨吗？小天会介意吗？</title>
 <style>
 :root{--ink:#29243a;--muted:#817b91;--paper:#fff;--bg:#f7f4fb;--line:#eee9f5;--purple:#7657c8;--purple2:#efe9ff;--pink:#f8e7ef;--green:#e8f5ee;--shadow:0 18px 55px rgba(57,39,91,.09)}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 4%,#f4eafa 0,transparent 32%),radial-gradient(circle at 95% 95%,#fbe9ef 0,transparent 30%),var(--bg);color:var(--ink);font-family:ui-rounded,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;min-height:100vh}
@@ -17,11 +17,11 @@ button{font:inherit;cursor:pointer}.wrap{width:min(760px,calc(100% - 32px));marg
 </head>
 <body>
 <main class="wrap">
-  <div class="top"><div class="brand">✳ XIAOWEN TEST</div><div class="pill">朋友聚会 · 边界感测试</div></div>
+  <div class="top"><div class="brand">✳ XIAOWEN TEST</div><div class="pill">朋友聚会 · 小文小天特别版</div></div>
   <section class="card hero" id="start">
     <div class="spark">💌</div><div class="eyebrow">A LITTLE RELATIONSHIP QUIZ</div>
-    <h1>小文的异性边界测试</h1>
-    <p>如果小文和异性做这些事，你能接受到什么程度？<br>没有标准答案，按你的真实想法选择就好。</p>
+    <h1>小文算出轨吗？小天会介意吗？</h1>
+    <p>如果小文和异性有这些互动，你觉得算出轨吗？小天会不会介意？<br>按你的真实想法，为每个情境做出判断。</p>
     <div class="meta"><span>✦ 40 道情境题</span><span>♡ 约 3–5 分钟</span><span>☁️ 答案仅保存在本机</span></div>
     <button class="primary" id="startBtn">开始测试 →</button>
     <div class="footnote">本测试仅供朋友间娱乐和交流，不代表对任何人的评价。</div>
@@ -37,12 +37,12 @@ button{font:inherit;cursor:pointer}.wrap{width:min(760px,calc(100% - 32px));marg
   </section>
   <section class="card result hidden" id="result">
     <div class="eyebrow">YOUR RESULT</div><div class="spark">🪞</div>
-    <div class="score" id="score">0%</div><h2 id="resultTitle">边界感报告</h2>
+    <div class="score" id="score">0%</div><h2 id="resultTitle">小天的判定结果</h2>
     <p id="resultDesc"></p>
     <div class="stats">
-      <div class="stat"><b id="yesCount">0</b><span>能接受</span></div>
-      <div class="stat"><b id="maybeCount">0</b><span>看情况</span></div>
-      <div class="stat"><b id="noCount">0</b><span>不能接受</span></div>
+      <div class="stat"><b id="yesCount">0</b><span>不算出轨，小天不介意</span></div>
+      <div class="stat"><b id="maybeCount">0</b><span>不算出轨，但小天会介意</span></div>
+      <div class="stat"><b id="noCount">0</b><span>算出轨，小天会介意</span></div>
     </div>
     <div class="result-actions"><button class="primary" id="copyBtn">复制结果</button><button class="subtle" id="restartBtn">再测一次 ↻</button></div>
     <div class="review"><h3>逐题答案</h3><div id="reviewList"></div></div>
@@ -51,49 +51,48 @@ button{font:inherit;cursor:pointer}.wrap{width:min(760px,calc(100% - 32px));marg
 </main>
 <script>
 const questions = [
-["日常社交","能接受小文和异性单独约着喝咖啡吗？"],
-["日常社交","能接受小文和异性单独吃午饭或晚饭吗？"],
-["日常社交","能接受小文和异性经常一起上下班或上下学吗？"],
-["日常社交","能接受小文和异性互相分享日常琐事吗？"],
-["日常社交","能接受小文和异性每天都发消息聊天吗？"],
-["日常社交","能接受小文和异性互相发送有趣的短视频或表情包吗？"],
-["日常社交","能接受小文和异性一起打游戏到很晚吗？"],
-["日常社交","能接受小文和异性单独去看电影吗？"],
-["日常社交","能接受小文和异性一起参加对方朋友的聚会吗？"],
-["日常社交","能接受小文和异性在社交平台频繁互相评论、点赞吗？"],
-["亲密互动","能接受小文和异性互相起亲昵称呼吗？"],
-["亲密互动","能接受小文和异性分享自己的烦恼，并寻求安慰吗？"],
-["亲密互动","能接受小文和异性在对方难过时进行长时间拥抱吗？"],
-["亲密互动","能接受小文和异性牵手过马路或在人多时拉着对方吗？"],
-["亲密互动","能接受小文和异性靠在一起看手机或看电影吗？"],
-["亲密互动","能接受小文和异性互相整理头发、衣领或衣服吗？"],
-["亲密互动","能接受小文和异性拍看起来比较亲密的合照吗？"],
-["亲密互动","能接受小文和异性互送有特殊纪念意义的礼物吗？"],
-["亲密互动","能接受小文和异性单独庆祝生日，并准备惊喜吗？"],
-["亲密互动","能接受小文和异性在聊天时使用爱心或暧昧表情吗？"],
-["深夜相处","能接受小文和异性在深夜单独聊天到凌晨吗？"],
-["深夜相处","能接受小文和异性深夜打电话或视频通话吗？"],
-["深夜相处","能接受小文和异性在对方失眠时陪着聊天吗？"],
-["深夜相处","能接受小文和异性深夜单独出去散步吗？"],
-["深夜相处","能接受小文和异性喝酒后单独待在一起吗？"],
-["深夜相处","能接受小文和异性在对方家里单独待到很晚吗？"],
-["深夜相处","能接受小文和异性一起通宵打游戏或看剧吗？"],
-["深夜相处","能接受小文和异性在旅行时住同一间房吗？"],
-["暧昧边界","能接受小文和异性互相说带有暧昧意味的话吗？"],
-["暧昧边界","能接受小文和异性开带有性暗示的玩笑吗？"],
-["暧昧边界","能接受小文和异性讨论彼此的理想型或感情经历吗？"],
-["暧昧边界","能接受小文和异性说“如果早点认识你就好了”之类的话吗？"],
-["暧昧边界","能接受小文和异性在聊天中刻意隐瞒你们的关系吗？"],
-["暧昧边界","能接受小文和异性删除聊天记录或设置消息免打扰吗？"],
-["暧昧边界","能接受小文和异性单独去周边城市或景点一日游吗？"],
-["暧昧边界","能接受小文和异性安排两个人的短途旅行吗？"],
-["高争议行为","能接受小文和异性接吻吗？"],
-["高争议行为","能接受小文和异性躺在同一张床上休息吗？"],
-["高争议行为","能接受小文和异性有摸头、摸脸或搂腰等亲密肢体接触吗？"],
-["高争议行为","能接受小文和异性以情侣的方式相处，但坚持说只是朋友吗？"],
-["高争议行为","能接受小文和异性发生超出普通朋友界限的亲密行为吗？"]
+["日常来往","能接受小文和异性单独吃一顿午饭吗？"],
+["日常来往","能接受小文和认识很多年的异性好友单独约饭吗？"],
+["日常来往","能接受小文下班后和异性同事单独去喝酒吗？"],
+["日常来往","能接受小文和小天也认识的异性朋友单独出去玩吗？"],
+["日常来往","能接受小文和异性朋友两个人去看电影吗？"],
+["日常来往","能接受小文在异性朋友生日时专门准备礼物吗？"],
+["日常来往","能接受小文收下异性朋友送的生日礼物吗？"],
+["日常来往","能接受小文每天都和某位异性朋友聊天吗？"],
+["日常来往","能接受小文半夜和认识多年的异性好友打电话吗？"],
+["日常来往","能接受小文向异性倾诉感情烦恼、寻求恋爱建议吗？"],
+["日常来往","能接受小文被异性夸可爱或帅气后，明显表现得很开心吗？"],
+["日常来往","能接受小文主动夸异性今天特别可爱或好看吗？"],
+["日常来往","能接受小文留意异性的发型、穿搭变化并主动夸奖吗？"],
+["日常来往","能接受小文和异性朋友使用同款物品吗？"],
+["日常来往","能接受小文把和异性朋友的双人合照发到社交平台吗？"],
+["日常来往","能接受小文一直把和异性的双人合照留在手机里吗？"],
+["亲近与关心","能接受小文和异性朋友使用只有彼此才懂的专属昵称吗？"],
+["亲近与关心","能接受小文和异性朋友聊起只有两个人知道的往事，并显得格外亲密吗？"],
+["亲近与关心","能接受异性朋友把小文称作自己最要好的异性朋友吗？"],
+["亲近与关心","能接受异性开玩笑说想和小文谈恋爱，小文听后笑着回应吗？"],
+["亲近与关心","能接受小文单独去见情绪低落的异性朋友，陪对方聊天吗？"],
+["亲近与关心","能接受小文开车把错过末班车的异性朋友送回家吗？"],
+["亲近与关心","能接受小文照顾喝醉了的异性朋友吗？"],
+["亲近与关心","能接受小文安慰哭泣的异性朋友吗？"],
+["亲近与关心","能接受小文把自己的外套借给怕冷的异性吗？"],
+["亲近与关心","能接受小文单独去帮异性朋友搬家吗？"],
+["亲近与关心","能接受异性朋友临时约小文见面，小文马上就赴约吗？"],
+["亲近与关心","能接受小文和异性朋友单独逛街，还让对方帮忙挑衣服吗？"],
+["外出与前任","能接受小文和异性朋友两个人去 KTV 唱歌吗？"],
+["外出与前任","能接受小文和异性朋友单独去主题乐园玩吗？"],
+["外出与前任","能接受小文仍然关注前任的社交账号吗？"],
+["外出与前任","能接受小文给前任发布的社交动态点赞吗？"],
+["外出与前任","能接受小文收到前任的新年问候后，正常回复对方吗？"],
+["外出与前任","能接受小文收到前任的生日祝福后，礼貌地回复谢谢吗？"],
+["外出与前任","能接受小文继续使用前任以前送的日常用品吗？"],
+["外出与前任","能接受小文没有删除和前任以前拍的照片吗？"],
+["外出与前任","能接受小文带小天去曾经和前任一起去过的地方吗？"],
+["外出与前任","能接受小文在共同朋友的婚礼上和前任正常聊天吗？"],
+["外出与前任","能接受小文听说前任开始了新恋情后，真心替对方感到高兴吗？"],
+["外出与前任","能接受小文收到前任询问近况的消息后，和对方简单聊几句吗？"]
 ];
-const choices=[{label:"能接受",desc:"这件事对我来说没问题",value:2},{label:"看情况",desc:"要看具体关系、场景和分寸",value:1},{label:"不能接受",desc:"这会让我感到不舒服",value:0}];
+const choices=[{label:"不算出轨，小天不介意",desc:"小文这样做没越界，小天也能接受",value:2},{label:"不算出轨，但小天会介意",desc:"不认为是出轨，不过心里会不舒服",value:1},{label:"算出轨，小天会介意",desc:"这已经越过了小天的关系底线",value:0}];
 let answers=JSON.parse(localStorage.getItem("xiaowen-test-answers")||"{}");
 let current=0;
 const $=id=>document.getElementById(id);
@@ -112,10 +111,10 @@ function finish(){
  const vals=Object.values(answers).map(Number),sum=vals.reduce((a,b)=>a+b,0),score=Math.round(sum/(questions.length*2)*100);
  const yes=vals.filter(x=>x===2).length,maybe=vals.filter(x=>x===1).length,no=vals.filter(x=>x===0).length;
  let title,desc;
- if(score>=85){title="边界感比较宽松";desc="你对小文和异性的相处方式相对开放。只要彼此坦诚、尊重边界，很多普通社交和亲密互动都可以接受。"}
- else if(score>=65){title="开放但有自己的尺度";desc="你整体比较包容，但并不是毫无底线。关系、场景和坦诚程度会影响你的判断。"}
- else if(score>=40){title="边界感清晰，重视分寸";desc="你会区分普通社交和亲密互动。对一些容易产生误会的行为，你更希望提前沟通、明确边界。"}
- else{title="边界感比较严格";desc="你对异性相处中的亲密行为比较敏感，更看重专属感和关系中的安全感。"}
+ if(score>=85){title="边界感比较宽松";desc="你对小文和异性的相处比较宽容。多数情境下，你不会认定小文出轨，小天也不太介意。"}
+ else if(score>=65){title="开放但有自己的尺度";desc="你能区分普通社交和越界行为。有些事不算出轨，但小天可能还是会介意。"}
+ else if(score>=40){title="边界感清晰，重视分寸";desc="你对小文和异性的相处有比较明确的界限。一些行为虽然不算出轨，但仍会让小天不舒服。"}
+ else{title="边界感比较严格";desc="你对小文和异性的互动比较谨慎，认为不少行为已经越界，小天会很介意。"}
  $("score").textContent=score+"%";$("resultTitle").textContent=title;$("resultDesc").textContent=desc;
  $("yesCount").textContent=yes;$("maybeCount").textContent=maybe;$("noCount").textContent=no;
  $("reviewList").innerHTML=questions.map((q,i)=>{const c=choices.find(x=>x.value===answers[i]);return `<div class="review-item"><span>${String(i+1).padStart(2,"0")} · ${q[0]}</span><br>${q[1]}<br><b>${c?c.label:"未作答"}</b></div>`}).join("");
@@ -125,7 +124,7 @@ $("startBtn").addEventListener("click",()=>{if(Object.keys(answers).length===que
 $("prevBtn").addEventListener("click",()=>{if(current>0){current--;render()}});
 $("nextBtn").addEventListener("click",()=>{if(answers[current]===undefined)return;if(current<questions.length-1){current++;render()}else finish()});
 $("restartBtn").addEventListener("click",()=>{if(confirm("确定清空本次答案，重新开始吗？")){answers={};save();current=0;show("start");window.scrollTo({top:0,behavior:"smooth"})}});
-$("copyBtn").addEventListener("click",async()=>{const vals=Object.values(answers).map(Number),score=Math.round(vals.reduce((a,b)=>a+b,0)/(questions.length*2)*100);const t=`小文的异性边界测试：${score}%\n能接受：${vals.filter(x=>x===2).length}题｜看情况：${vals.filter(x=>x===1).length}题｜不能接受：${vals.filter(x=>x===0).length}题\n来测测你能接受小文和异性相处到什么程度！`;try{await navigator.clipboard.writeText(t);$("copyBtn").textContent="已复制 ✓"}catch(e){$("copyBtn").textContent="复制失败，请手动截图"}});
+$("copyBtn").addEventListener("click",async()=>{const vals=Object.values(answers).map(Number),score=Math.round(vals.reduce((a,b)=>a+b,0)/(questions.length*2)*100);const t=`小文算出轨吗？小天会介意吗？：${score}%\n不算出轨，小天不介意：${vals.filter(x=>x===2).length}题｜不算出轨，但小天会介意：${vals.filter(x=>x===1).length}题｜算出轨，小天会介意：${vals.filter(x=>x===0).length}题\n来判断小文和异性的这些行为算不算出轨，以及小天会不会介意！`;try{await navigator.clipboard.writeText(t);$("copyBtn").textContent="已复制 ✓"}catch(e){$("copyBtn").textContent="复制失败，请手动截图"}});
 </script>
 </body>
 </html>
